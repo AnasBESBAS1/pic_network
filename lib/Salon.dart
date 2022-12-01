@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Salon extends StatefulWidget {
@@ -51,19 +50,26 @@ class _Salon extends State<Salon> {
                     ),
                   ),
                   Text(
-                    nameValue,
+                    "name to send : $nameValue",
                     style: const TextStyle(fontSize: 20),
                   ),
-                  Expanded(
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        minimumSize: const Size.fromHeight(40),
-                        backgroundColor: Colors.black, // Background color
-                      ),
-                      onPressed: () {},
-                      child: const Text(
-                        'Guest',
-                        style: TextStyle(fontSize: 40),
+                  SizedBox(
+                    width: double.infinity,
+                    height: 200,
+                    child: Center(
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: const Size.fromHeight(80),
+                          backgroundColor: Colors.black, // Background color
+                        ),
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/GuestPage');
+                          const Icon(Icons.arrow_forward_ios);
+                        },
+                        child: const Text(
+                          'Enter',
+                          style: TextStyle(fontSize: 30),
+                        ),
                       ),
                     ),
                   ),

@@ -1,7 +1,4 @@
 import 'dart:async';
-
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:app_settings/app_settings.dart';
 import 'package:connectivity/connectivity.dart';
@@ -19,6 +16,7 @@ class _Guest extends State<Guest> {
   final Connectivity _connectivity = Connectivity();
   late StreamSubscription<ConnectivityResult> _connectivitySubscription;
   final String _statusConnection = "ConnectivityResult.wifi";
+
   @override
   void dispose() {
     _connectivitySubscription.cancel();
@@ -32,23 +30,17 @@ class _Guest extends State<Guest> {
     _connectivitySubscription =
         _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
 
-    /// Call out to intialize platform state.
     initPlatformState();
     super.initState();
   }
 
   Future<void> initConnectivity() async {
     ConnectivityResult result = ConnectivityResult.none;
-    // Platform messages may fail, so we use a try/catch PlatformException.
     try {
       result = await _connectivity.checkConnectivity();
     } on PlatformException catch (e) {
       print(e.toString());
     }
-
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
     if (!mounted) {
       return Future.value(null);
     }
@@ -57,9 +49,6 @@ class _Guest extends State<Guest> {
   }
 
   Future<void> initPlatformState() async {
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
     if (!mounted) return;
   }
 
@@ -116,20 +105,18 @@ class _Guest extends State<Guest> {
                   ),
                   Expanded(
                     child: ElevatedButton(
-
                       style: ElevatedButton.styleFrom(
                         minimumSize: const Size.fromHeight(40),
-                        primary: Colors.black, // Background color
+                        backgroundColor: Colors.black, // Background color
                       ),
                       onPressed: () {
-                        if (_connectionStatus ==  _statusConnection){
+                        if (_connectionStatus == _statusConnection) {
                           print(_connectionStatus.toString());
                           Navigator.pushNamed(context, '/Salon');
                           const Icon(Icons.arrow_forward_ios);
                         } else {
                           showAlertDialog(context);
                         }
-
                       },
                       child: const Text(
                         'Enter salon',
@@ -142,6 +129,7 @@ class _Guest extends State<Guest> {
             )));
   }
 }
+
 showAlertDialog(BuildContext context) {
   // Create button
   Widget okButton = TextButton(
@@ -154,7 +142,7 @@ showAlertDialog(BuildContext context) {
   // Create AlertDialog
   AlertDialog alert = AlertDialog(
     title: const Text("Attention!"),
-    content: Text("Connect to WIFI host to enter"),
+    content: const Text("Connect to WIFI host to enter the Salon"),
     actions: [
       okButton,
     ],

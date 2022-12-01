@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:pic_network/Guest.dart';
 import 'package:pic_network/Host.dart';
 import 'package:pic_network/Scanner.dart';
-
+import 'GuestPage.dart';
+import 'HttpServer.dart';
 import 'MainMenu.dart';
 import 'Salon.dart';
 
@@ -13,7 +14,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,11 +24,13 @@ class MyApp extends StatelessWidget {
       ),
         initialRoute: '/MainMenu',
         routes: {
-        '/MainMenu': (context) => MainMenu(),
+        '/MainMenu': (context) =>  MainMenu(),
           '/Scanner': (context) =>  ScannerWidget(),
           '/Host' :  (context) => Host(),
           '/Guest' :  (context) => Guest(),
           '/Salon' :  (context) => Salon(),
+          '/Http_Server' : (context) => Http_Server(),
+          '/GuestPage' : (context) => GuestPage(),
         });
   }
 }

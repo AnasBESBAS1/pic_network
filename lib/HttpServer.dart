@@ -1,14 +1,14 @@
-import 'package:pic_network/communication.dart';
+import 'package:pic_network/HttpCommunication.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class Http_Server extends StatefulWidget {
+  const Http_Server({super.key});
 
   @override
-  _HomePageState createState() => _HomePageState();
+  _Http_ServerState createState() => _Http_ServerState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _Http_ServerState extends State<Http_Server> {
   late Communication comm;
   TextEditingController txtController = TextEditingController();
 

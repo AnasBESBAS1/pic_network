@@ -35,8 +35,8 @@ class _MainMenu extends State<MainMenu> {
                   Expanded(
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        minimumSize: const Size.fromHeight(40)
-                        , backgroundColor: Colors.grey, // Background color
+                        minimumSize: const Size.fromHeight(40),
+                        backgroundColor: Colors.grey, // Background color
                       ),
                       onPressed: () {
                         Navigator.pushNamed(context, '/Host');
